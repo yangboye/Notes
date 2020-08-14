@@ -12,7 +12,7 @@
 
 有的说安装的时候会提示设置密码什么的，但是我的没有，所以安装后就出问题了，`sudo mysql -u root -p `提示输入密码总是失败，解决方法：`sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf`，加上一句
 
-![image-20200813214410195](D:\NLP\Notes\Database\MySQL\img\mysql密码错误.png)
+![image-20200813214410195](.\img\mysql密码错误.png)
 
 保存更改之后再重新`sudo mysql -u root -p`，这样就不用输入密码了，进入之后更改`root`的密码：
 
