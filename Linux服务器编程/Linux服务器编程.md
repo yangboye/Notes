@@ -8,7 +8,7 @@
 
 - **主机字节序和网络字节序**
 
-> `大端字节序（big endian）`：一个整数的高位字节（23~31bit）存储在内存的低地址处，低位字节（0~7bit）存储在内存的高位地址处。
+> `大端字节序（big endian）`：一个整数的高位字节（23-31bit）存储在内存的低地址处，低位字节（0-7bit）存储在内存的高位地址处。
 >
 > `小端字节序（little endian）`：与大端字节序相反。
 
@@ -184,8 +184,8 @@ struct in_addr {
 
   参考：
 
-  	- [select、poll、epoll之间的区别总结（IO同、异步、（非）阻塞）----内核态、用户态](https://www.cnblogs.com/langzibin/p/7755783.html)
-  	- 游双《Linux高性能服务器编程》
+  - [select、poll、epoll之间的区别总结（IO同、异步、（非）阻塞）----内核态、用户态](https://www.cnblogs.com/langzibin/p/7755783.html)
+  - 游双《Linux高性能服务器编程》
 
   > 课代表：
   >

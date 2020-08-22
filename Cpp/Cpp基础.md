@@ -101,3 +101,133 @@ class Base
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200731214718312.png)
 看到没有看到没有，这样子类`Derived`就没有被释放掉！！！
+
+
+
+## 3. 困惑的问题
+
+### 3.1 `sizeof()`和`strlen()`
+
+在学Linux服务器端编程的时候，总是被`sizeof(buf)`、`sizeof(buf)-1`、`strlen(buf)`、`strlen(buf)+1`搞晕，在这里总结一下。
+
+因为`strlen()`是一个函数，参数只能是`char*`类型，而`sizeof()`是一个单目运算符，它的参数可以是数组、指针、类型、对象、函数等等，所以这里分两种情况分别说：第一种是字符串情况下，strlen()和sizeof()都可以用；第二种情况是其他类型下，只能用sizeof()。
+
+#### 3.1.1 字符串情况下（char *）
+
+API: `size_t strlen(char const* str);`，头文件`string.h`
+
+功能：计算指定字符串str的长度，不包括结束字符`\0`。
+
+```c++
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    /*字符串中, sizeof()和strlen()的区别*/
+    char ch[10];
+	printf("sizeof(ch)=%d, strlen(ch)=%d\n", sizeof(ch), strlen(ch));	// 10, 1067(这个值可能不一样)
+	memset(ch, '\0', sizeof(ch));	// 将起始地址ch开始的sizeof(ch)个bytes都设置为`\0`
+	printf("sizeof(ch)=%d, strlen(ch)=%d\n", sizeof(ch), strlen(ch));	// 10， 0
+	ch[0] = 'a';	// 将ch的第0个字符设置为'a'
+	ch[2] = 'c';	// 将ch的第2个字符设置为'c'
+	printf("ch=%s, sizeof(ch)=%d, strlen(ch)=%d\n", ch, sizeof(ch), strlen(ch));	// 10， 1 （？？？）
+	printf("\n");
+    
+    /*char a[]和char *a的区别*/
+    const char a[] = "hello";
+	printf("a=%s, sizeof(a)=%d, strlen(a)=%d\n", a, sizeof(a), strlen(a));	// 6, 5
+	const char *a2 = "hello";
+	printf("a2=%s, sizeof(a2)=%d, strlen(a2)=%d\n", a2, sizeof(a2), strlen(a2));	// 4, 5 （？？？）
+	printf("\n");
+    
+    return 0;
+}
+```
+
+（1）第`8`行中，`sizeof(ch)=10`表示ch占用了10个bytes，而`strlen(ch)=1067`则表示的是从起始地址ch开始，第1068个byte才是`\0`（这个结果可能会不一样，因为它越界了嘛）；
+
+（2）第`10`行中，`sizeof(ch)`还是等于10，说明不管ch里放的是啥，sizeof计算的都是它所占空间的bytes，而`strlen(ch)=0`，再结合11~13行，设置后的内容应该是"**a**\0**c**\0\0..."，但是strlen的结果却是**1**，说明strlen()计算的是**字符串中第一个`\0`之前的字符个数**；
+
+（3）第`18`行中，`sizeof(a)=6`，包括了结束符`\0`（也就是说sizeof计算的是"hello\0"这样一个字符串）;
+
+（4）第`20`行中，`sizeof(a2)`为啥会是**4**嘞？？？这就涉及到了`char a[]`和`char *a`的区别了。这个待会再讲。
+
+
+
+### 3.1.2 其他情况下（只有`sizeof()`）
+
+对于一般的类型，比如sizeof(int)、sizeof(char)这些，计算出来的都是该类型占用的bytes：
+
+```c++
+int x;
+printf("sizeof(int)=%d, sizeof(x)=%d\n", sizeof(int), sizeof(x));	// 4, 4
+```
+
+代表int类型（变量）占用4个bytes，这个跟操作系统（编译器？）有关。
+
+除此之外，问得最多的还是类/结构体的长度了，也就是内存对齐的问题，[可以参考这篇博客https://www.cnblogs.com/dingxiaoqiang/p/8059329.html](https://www.cnblogs.com/dingxiaoqiang/p/8059329.html)
+
+
+
+### 3.1.3 使用`memset（）初始化`
+
+API: `void* memset(void *buff, int c, int count); `
+
+功能：将起始地址buff开始的count个bytes都设置为c。
+
+```c++
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char buf[1024];
+	printf("sizeof(buf)=%d, strlen(buf)=%d\n", sizeof(buf), strlen(buf));	// 1024, 1183(可能会不同)
+	memset(buf, '\0', sizeof(buf));
+	printf("sizeof(buf)=%d, strlen(buf)=%d\n", sizeof(buf), strlen(buf));	// 1024, 0
+	memset(buf, 'a', sizeof(buf)-1);	// 用的时候只能用 1024-1=1023个，因为最后一个要用作存结束标识符 `\0`
+    // memset(buf, 'a', sizeof(buf)-1);	// 你可以试试这句，输出会有在后面有很多烫烫烫烫~~~
+	printf("%s\n", buf);
+	printf("sizeof(buf)=%d, strlen(buf)=%d\n", sizeof(buf), strlen(buf));	// 1024, 1023
+	printf("\n");
+    return 0;
+}
+```
+
+特别注意的是，`memset`是将每一个byte都设置为`c`，那你算算下面的执行结果是多少：
+
+```c++
+int x;
+printf("sizeof(x)=%d\n", sizeof(x));	// 4
+memset(&x, 1, sizeof(x));
+printf("%d\n", x);
+```
+
+结果是`16843009`。怎么来的呢？让我们看看：
+
+由第`2`行可以知道，x占用了4个bytes空间，也就是4×8=32bit，每一个byte都设置为1，即
+
+> 0000 0001 0000 0001 0000 0001 0000 0001
+
+算一算，2^24 + 2^16 + 2^8 + 2^0 = 16843009.
+
+<hr>
+
+> 课代表：
+>
+> （1）`strlen()`是用来计算字符串长度的，不包括结束字符`\0`(也就是第一个`\0`之前字符的个数)；
+>
+> （2）在Linux网络编程中，可以理解为sizeof(buf) = strlen(buf)+1(最后一位不存数据，只用来存放结束标志`\0`)，所以初始化/重置用sizeof(buf)，读写用sizeof(buf)-1。
+
+### 3.2 BitMap(位图)
+
+参考：[C++实现BitMap数据结构](https://blog.csdn.net/yanerhao/article/details/72848524)
+
+Linux服务器编程中IO复用的`select`涉及到了位图的概念，在这里做个了解。
+
+- 概念：位图就是用一个bit来标记某个元素对应的value，而key就是该元素，你可以把它想象成bool的一个数组，只不过这个数组的每一个bit表示一个元素，粒度更小了，所以就更省空间了呀。
+
+- 一个用法：排序。详见[博客](https://blog.csdn.net/yanerhao/article/details/72848524)。
+
+- 实现：关键就是找下标咯，`x>>3`(等价于x/8)，判断在哪个byte上，`x&(7)`(等价于x%8)，判断在某个byte上的哪个bit上。
