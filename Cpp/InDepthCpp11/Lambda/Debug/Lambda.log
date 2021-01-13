@@ -1,0 +1,77 @@
+﻿  main.cpp
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(236): warning C4244: “初始化”: 从“_Ty”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty=float
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(357): note: 参见对正在编译的函数 模板 实例化“std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)”的引用
+          with
+          [
+              _This=float,
+              _Ty=double,
+              _Other=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(358): note: 参见对正在编译的函数 模板 实例化“std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)”的引用
+          with
+          [
+              _This=float,
+              _Ty=double,
+              _Other=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(357): note: 参见对正在编译的函数 模板 实例化“std::tuple<float>::tuple<std::_Exact_args_t,_Ty,,0>(_Tag,_This2 &&)”的引用
+          with
+          [
+              _Ty=double,
+              _Tag=std::_Exact_args_t,
+              _This2=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(357): note: 参见对正在编译的函数 模板 实例化“std::tuple<float>::tuple<std::_Exact_args_t,_Ty,,0>(_Tag,_This2 &&)”的引用
+          with
+          [
+              _Ty=double,
+              _Tag=std::_Exact_args_t,
+              _This2=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(357): note: 参见对正在编译的函数 模板 实例化“std::tuple<int,float>::tuple<std::_Exact_args_t,_Ty,double,0>(_Tag,_This2 &&,double &&)”的引用
+          with
+          [
+              _Ty=int,
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(357): note: 参见对正在编译的函数 模板 实例化“std::tuple<int,float>::tuple<std::_Exact_args_t,_Ty,double,0>(_Tag,_This2 &&,double &&)”的引用
+          with
+          [
+              _Ty=int,
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(468): note: 参见对正在编译的函数 模板 实例化“std::tuple<std::string,int,float>::tuple<std::_Exact_args_t,const char(&)[6],_Ty,double,0>(_Tag,_This2,_Ty &&,double &&)”的引用
+          with
+          [
+              _Ty=int,
+              _Tag=std::_Exact_args_t,
+              _This2=const char (&)[6]
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\tuple(468): note: 参见对正在编译的函数 模板 实例化“std::tuple<std::string,int,float>::tuple<std::_Exact_args_t,const char(&)[6],_Ty,double,0>(_Tag,_This2,_Ty &&,double &&)”的引用
+          with
+          [
+              _Ty=int,
+              _Tag=std::_Exact_args_t,
+              _This2=const char (&)[6]
+          ]
+  d:\source_code\vs_repo\indepthcpp11\lambda\main.cpp(6): note: 参见对正在编译的函数 模板 实例化“std::tuple<std::string,int,float>::tuple<const char(&)[6],int,double,0>(_This2,int &&,double &&) noexcept(false)”的引用
+          with
+          [
+              _This2=const char (&)[6]
+          ]
+  d:\source_code\vs_repo\indepthcpp11\lambda\main.cpp(6): note: 参见对正在编译的函数 模板 实例化“std::tuple<std::string,int,float>::tuple<const char(&)[6],int,double,0>(_This2,int &&,double &&) noexcept(false)”的引用
+          with
+          [
+              _This2=const char (&)[6]
+          ]
+  Lambda.vcxproj -> D:\source_code\vs_repo\InDepthCpp11\Debug\Lambda.exe
