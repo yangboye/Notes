@@ -1,34 +1,16 @@
 #include <iostream>
-#include <memory>
 
-class A : public std::enable_shared_from_this<A> {
-public:
-	A() {
-		std::cout << "A constructor" << std::endl;
-	}
+#include "smart_ptr.h"
 
-	A(int a) {
-		std::cout << "In constructor of A: param->" << a << std::endl;
-	}
+using std::cout;
+using std::endl;
 
-	~A() {
-		std::cout << "A destructor" << std::endl;
-	}
+int main() {
+	SmartPtr<int> p1(new int(0));	// 构造函数 SmartPtr<T>::SmartPtr(T*)
+	p1 = p1;
 
-	std::shared_ptr<A> GetSelf() {
-		return shared_from_this();
-	}
-};
-
-int main(int argc, char** argv) {
-	A a();	// 声明的是一个函数a, 返回类型为A
-	A b = A(10);	// 栈对象, 会自动释放
-
-	A* p_a = new A();	// 堆对象, 不会自动释放
-
-	std::shared_ptr<A> p_b = std::make_shared<A>();
-
-	std::shared_ptr<A> p_c = b.GetSelf();
-
+	SmartPtr<int> p2(p1); // 拷贝构造函数 SmartPtr<T>::SmartPtr(const SmartPtr<T>&)
+	SmartPtr<int> p3(new int(5));// 构造函数 SmartPtr<T>::SmartPtr(T*)
+	p1 = p3;// 拷贝赋值函数 SmartPtr<T>::operator=(const SmartPtr<T>&)
 	return 0;
 }

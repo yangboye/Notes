@@ -5,8 +5,10 @@
 ## 1. `const`的使用
 
 ## 2. C++面向对象特性
+
 c++的OOP特性包括`封装`、`继承`、`多态`，[huihui/interview](https://github.com/huihut/interview/#license)中的那张图挺直观的，这里直接贴过来。其中最复杂的便是`多态`，所以接下来主要就讲讲多态。
 ![C++的OOP](https://img-blog.csdnimg.cn/20200731201456256.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NDAwMjMy,size_16,color_FFFFFF,t_70)
+
 ### 2.1 封装
 靠`public`、`protected`、`private`这三个来控制成员的访问权限来达到封装的特性。
 - `public`成员：可以被`任意实体`访问；
@@ -86,6 +88,7 @@ int main()
 运行结果：
 ![虚函数运行结果1](https://img-blog.csdnimg.cn/202007312134175.png)
 如果将`Base::fun()`变成虚函数，也就是
+
 ```c++
 class Base
 {...
