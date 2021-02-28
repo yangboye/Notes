@@ -48,6 +48,212 @@ kmp算法参考博客(第一篇对应的是最长字串的形式，第二个是�
 
 ## 树
 
+### 二叉树的遍历
+
+二叉树的存储结构:
+
+```c++
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(): val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode* _left, TreeNode* _right): val(x), left(_left), right(_right) {}
+};
+```
+
+N叉树的存储结构：
+
+```c++
+struct Node{
+    int val;
+    vector<Node*> children;
+    Node() {}
+    Node(int _val): val(_val) {}
+    Node(int _val, vector<Node*> _children):val(_val), children(_children) {}
+};
+```
+
+#### 前序遍历
+
+- 递归：
+
+  ```c++
+  void traversal(TreeNode* node, vector<int>& vec) {
+      if(node == nullptr) return;
+      vec.push_back(node->val);		// T
+      traversal(node->left, vec);		// L
+      traversal(node->right, vec);	// R
+  }
+  
+  vector<int> preorderTraversal(TreeNode* root) {
+      vector<int> result;
+      traversal(root, result);
+      return result;
+  }
+  ```
+
+- 迭代:
+
+  ```c++
+  vector<int> preorderTraversal(TreeNode* root) {
+      vector<int> result;
+      if(root == nullptr) return result;
+      stack<TreeNode*> st;
+      st.push(root);
+      while(!st.empty()) {
+          TreeNode* node = st.top();
+          st.pop();
+          if(node == nullptr) continue;
+          result.push_back(node->val);	// T
+          // 栈的性质，先放入右子树，再放入左子树
+          st.push(node->right);			// R
+          st.push(node->left);			// T
+      }
+      return result;
+  }
+  ```
+
+#### 中序遍历
+
+- 递归:
+
+  ```c++
+  void traversal(TreeNode* node, vector<int>& vec) {
+      if(node == nullptr) return;
+      traversal(node->left, vec);		// L
+      vec.push_back(node->val);		// T
+      traversal(node->right, vec);	// R
+  }
+  
+  vector<int> inorderTraversal(TreeNode* root) {
+      vector<int> result;
+      traversal(root, result);
+      return result;
+  }
+  ```
+
+- 迭代:
+
+  ```c++
+  vector<int> inorderTraversal(TreeNode* root) {
+      vector<int> result;
+      if(root == nullptr) return result;
+      stack<TreeNode*> st;
+      TreeNode* cur = root;
+      while(cur || !st.empty()) {
+          while(cur) {	// 访问所有左子树 L
+              st.push(cur);
+              cur = cur->left;
+          }
+          // 已经到了最左下角
+          cur = st.top();
+          st.pop();
+          result.push_back(cur->val);	// T
+          cur = cur->right;	// R
+      }
+      return result;
+  }
+  ```
+
+#### 后序遍历
+
+- 递归:
+
+  ```c++
+  void traversal(TreeNode* node, vector<int>& vec) {
+      if(node == nullptr) return;
+      traversal(node->left, vec);		// L
+      traversal(node->right, vec);	// R
+      vec.push_back(node->val);		// T
+  }
+  
+  vector<int> postorderTraversal(TreeNode* root) {
+      vector<int> result;
+      traversal(root, result);
+      return result;
+  }
+  ```
+
+- 迭代:
+
+  ```c++
+  // 后序遍历的迭代方法与前序遍历类似，访问TRL，然后逆序得到LRT即为后序
+  vector<int> postorderTraversal(TreeNode* root) {
+      vector<int> result;
+      if(root == nullptr) return result;
+      stack<TreeNode*> st;
+      st.push(root);
+      while(!st.empty()) {
+          TreeNode* node = st.top();
+          st.pop();
+          if(node == nullptr) continue;
+          result.push_back(node->val);	// T
+          // 先访问R，再访问L
+          st.push(node->left);	// L
+          st.push(node->right);	// R
+      }
+      // 上面得到的result中的是TRL，逆序得到LRT
+      reverse(result.begin(), result.end());
+      return result;
+  }
+  ```
+
+#### 层次遍历
+
+- 迭代:
+
+  ```c++
+  // 使用队列
+  vector<vector<int>> levelOrder(TreeNode* root) {
+      vector<vector<int>> result;
+      if(root == nullptr) return result;
+      queue<int> que;
+      que.push(root);
+      while(!que.empty()) {
+          int level_cnt = que.size();	// 当前层的结点个数
+          vector<int> temp;			// 当前层的所有节点
+          for(int i = 0; i < level_cnt; ++i) {
+              TreeNode* node = que.front();
+              que.pop();
+              temp.push_back(node->val);
+              if(node->left) que.push(node->left);
+              if(node->right) que.push(node->right);
+          }
+          result.push_back(temp);
+      }
+      return result;
+  }
+  ```
+
+#### 相关的题目
+
+| 题号 |                             题目                             | 实现 |                             参考                             |               备注                |
+| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :-------------------------------: |
+| 144  | [二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/) |      |                                                              |           栈、前序遍历            |
+|  94  | [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/) |      |                                                              |           栈、中序遍历            |
+| 145  | [二叉树的后序遍历](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/) |      |                                                              |     栈、后序遍历、vector反转      |
+| 102  | [二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) |      |                                                              |          队列、层次遍历           |
+| 226  | [翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/) |      |                                                              | 前序遍历/后序遍历/层序遍历+swap() |
+| 107  | [二叉树的层序遍历 II](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/) |      |                                                              |         层序遍历+reverse          |
+| 199  | [二叉树的右视图](https://leetcode-cn.com/problems/binary-tree-right-side-view/) |      |                                                              |             层序遍历              |
+| 637  | [二叉树的层平均值](https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/) |      |                                                              |             层序遍历              |
+| 429  | [N 叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/) |      |                                                              |             层序遍历              |
+| 589  | [N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/) |      |                                                              |           栈、前序遍历            |
+| 590  | [N叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/) |      |                                                              |           栈、后序遍历            |
+| 101⭐ | [对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/) |      | [二叉树：我对称么？](https://mp.weixin.qq.com/s/Kgf0gjvlDlNDfKIH2b1Oxg) |            递归、遍历             |
+| 104  | [二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) |      | [二叉树：看看这些树的最大深度](https://mp.weixin.qq.com/s/guKwV-gSNbA1CcbvkMtHBg) |      层序遍历(递归用后序LRT)      |
+| 559  | [N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/) |      |                                                              |      层序遍历(递归用后序LRT)      |
+| 222  | [完全二叉树的节点个数](https://leetcode-cn.com/problems/count-complete-tree-nodes/) |      |                                                              |       遍历（递归用后序LRT）       |
+| 110⭐ | [平衡二叉树](https://leetcode-cn.com/problems/balanced-binary-tree/) |      | [二叉树：我平衡么？](https://mp.weixin.qq.com/s/isUS-0HDYknmC0Rr4R8mww) |                                   |
+
+
+
+### 二叉树的属性
+
+主要是求二叉树的最大/最小深度、最大宽度、结点个数等等，关键是选择合适的遍历方法（一般就是迭代用层序遍历，递归用后序遍历）。
+
 
 
 ## 回溯
