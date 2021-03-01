@@ -304,6 +304,16 @@ struct Node{
 
 ## 贪心
 
+贪心的题一般需要排序
+
+
+
+| 题号 |                             题目                             | 实现 |                             参考                             |     备注     |
+| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :----------: |
+| 455  | [分发饼干](https://leetcode-cn.com/problems/assign-cookies/) |      |                                                              | 排序，双指针 |
+| 376⭐ | [摆动序列](https://leetcode-cn.com/problems/wiggle-subsequence/) |      | [贪心思路 清晰而正确的题解](https://leetcode-cn.com/problems/wiggle-subsequence/solution/tan-xin-si-lu-qing-xi-er-zheng-que-de-ti-jie-by-lg/) |              |
+|  53  | [最大子序和](https://leetcode-cn.com/problems/maximum-subarray/) |      |                                                              |      DP      |
+
 
 
 ## DP
