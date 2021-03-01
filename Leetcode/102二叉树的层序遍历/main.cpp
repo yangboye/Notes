@@ -19,6 +19,22 @@ struct TreeNode {
 class Solution {
 public:
   vector<vector<int>> levelOrder(TreeNode* root) {
-
+    vector<vector<int>> result;
+    if (root == nullptr) return result;
+    queue<TreeNode*> que;
+    TreeNode* node;
+    que.push(root);
+    while (!que.empty()) {
+      int level_cnt = que.size();
+      result.push_back({});
+      for (int i = 0; i < level_cnt; ++i) {
+        node = que.front();
+        que.pop();
+        result.back().push_back(node->val);
+        if (node->left) que.push(node->left);
+        if (node->right) que.push(node->right);
+      }
+    } // while
+    return result;
   }
 };

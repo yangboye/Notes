@@ -229,30 +229,72 @@ struct Node{
 
 #### 相关的题目
 
-| 题号 |                             题目                             | 实现 |                             参考                             |               备注                |
-| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :-------------------------------: |
-| 144  | [二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/) |      |                                                              |           栈、前序遍历            |
-|  94  | [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/) |      |                                                              |           栈、中序遍历            |
-| 145  | [二叉树的后序遍历](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/) |      |                                                              |     栈、后序遍历、vector反转      |
-| 102  | [二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) |      |                                                              |          队列、层次遍历           |
-| 226  | [翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/) |      |                                                              | 前序遍历/后序遍历/层序遍历+swap() |
-| 107  | [二叉树的层序遍历 II](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/) |      |                                                              |         层序遍历+reverse          |
-| 199  | [二叉树的右视图](https://leetcode-cn.com/problems/binary-tree-right-side-view/) |      |                                                              |             层序遍历              |
-| 637  | [二叉树的层平均值](https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/) |      |                                                              |             层序遍历              |
-| 429  | [N 叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/) |      |                                                              |             层序遍历              |
-| 589  | [N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/) |      |                                                              |           栈、前序遍历            |
-| 590  | [N叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/) |      |                                                              |           栈、后序遍历            |
-| 101⭐ | [对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/) |      | [二叉树：我对称么？](https://mp.weixin.qq.com/s/Kgf0gjvlDlNDfKIH2b1Oxg) |            递归、遍历             |
-| 104  | [二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) |      | [二叉树：看看这些树的最大深度](https://mp.weixin.qq.com/s/guKwV-gSNbA1CcbvkMtHBg) |      层序遍历(递归用后序LRT)      |
-| 559  | [N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/) |      |                                                              |      层序遍历(递归用后序LRT)      |
-| 222  | [完全二叉树的节点个数](https://leetcode-cn.com/problems/count-complete-tree-nodes/) |      |                                                              |       遍历（递归用后序LRT）       |
-| 110⭐ | [平衡二叉树](https://leetcode-cn.com/problems/balanced-binary-tree/) |      | [二叉树：我平衡么？](https://mp.weixin.qq.com/s/isUS-0HDYknmC0Rr4R8mww) |                                   |
+| 题号 |                             题目                             | 实现 |                             参考                             |                             备注                             |
+| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| 144  | [二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/) |      |                                                              |                         栈、前序遍历                         |
+|  94  | [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/) |      |                                                              |                         栈、中序遍历                         |
+| 145  | [二叉树的后序遍历](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/) |      |                                                              |                   栈、后序遍历、vector反转                   |
+| 102  | [二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) |      |                                                              |                        队列、层次遍历                        |
+| 226  | [翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/) |      |                                                              |              前序遍历/后序遍历/层序遍历+swap()               |
+| 107  | [二叉树的层序遍历 II](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/) |      |                                                              |                       层序遍历+reverse                       |
+| 199  | [二叉树的右视图](https://leetcode-cn.com/problems/binary-tree-right-side-view/) |      |                                                              |                           层序遍历                           |
+| 637  | [二叉树的层平均值](https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/) |      |                                                              |                           层序遍历                           |
+| 429  | [N 叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/) |      |                                                              |                           层序遍历                           |
+| 589  | [N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/) |      |                                                              |                         栈、前序遍历                         |
+| 590  | [N叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/) |      |                                                              |                         栈、后序遍历                         |
+| 101⭐ | [对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/) |      | [二叉树：我对称么？](https://mp.weixin.qq.com/s/Kgf0gjvlDlNDfKIH2b1Oxg) |                          递归、遍历                          |
+| 104  | [二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) |      | [二叉树：看看这些树的最大深度](https://mp.weixin.qq.com/s/guKwV-gSNbA1CcbvkMtHBg) |                   层序遍历(递归用后序LRT)                    |
+| 559  | [N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/) |      |                                                              |                   层序遍历(递归用后序LRT)                    |
+| 222  | [完全二叉树的节点个数](https://leetcode-cn.com/problems/count-complete-tree-nodes/) |      |                                                              |                    遍历（递归用后序LRT）                     |
+| 110⭐ | [平衡二叉树](https://leetcode-cn.com/problems/balanced-binary-tree/) |      | [二叉树：我平衡么？](https://mp.weixin.qq.com/s/isUS-0HDYknmC0Rr4R8mww) |                                                              |
+| 257⭐ | [二叉树的所有路径](https://leetcode-cn.com/problems/binary-tree-paths/) |      |                                                              |                        先序遍历(TLR)                         |
+| 100  |   [相同的树](https://leetcode-cn.com/problems/same-tree/)    |      |                                                              | 遍历（联系【[101](https://leetcode-cn.com/problems/symmetric-tree/)】题） |
+| 404  | [左叶子之和](https://leetcode-cn.com/problems/sum-of-left-leaves/) |      |                                                              |                       判断左叶子的条件                       |
+| 513  | [找树左下角的值](https://leetcode-cn.com/problems/find-bottom-left-tree-value/) |      |                                                              |                           层序遍历                           |
+| 106⭐ | [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) |      |                                                              |                         二叉树的构建                         |
+
+**递归之经验：**
+
+1. 递归三部曲：
+
+   - 确定递归函数的参数和返回值；
+
+   - 确定终止条件；
+
+   - 确定单层递归的逻辑；
+
+     
+
+2. 递归函数什么时候需要返回值？什么时候不需要返回值？
+
+> **「如果需要搜索整颗二叉树，那么递归函数就不要返回值，如果要搜索其中一条符合条件的路径，递归函数就需要返回值，因为遇到符合条件的路径了就要及时返回。」**
+
+
+
+3. 参考：
+   - [二叉树：以为使用了递归，其实还隐藏着回溯](https://mp.weixin.qq.com/s/ivLkHzWdhjQQD1rQWe6zWA)
+   - [二叉树：递归函数究竟什么时候需要返回值，什么时候不要返回值？](https://mp.weixin.qq.com/s/6TWAVjxQ34kVqROWgcRFOg)
+
+
+
+**经验：**
+
+- 树的题目先尝试用递归的方法解决，关键是选择一个合适的遍历方式；
+- 
 
 
 
 ### 二叉树的属性
 
 主要是求二叉树的最大/最小深度、最大宽度、结点个数等等，关键是选择合适的遍历方法（一般就是迭代用层序遍历，递归用后序遍历）。
+
+
+
+### 二叉树的构建
+
+| 题号 |                             题目                             | 实现 | 参考 |     备注     |
+| :--: | :----------------------------------------------------------: | :--: | :--: | :----------: |
+| 106⭐ | [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) |      |      | 二叉树的构建 |
 
 
 
