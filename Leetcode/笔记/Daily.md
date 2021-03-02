@@ -252,6 +252,7 @@ struct Node{
 | 404  | [左叶子之和](https://leetcode-cn.com/problems/sum-of-left-leaves/) |      |                                                              |                       判断左叶子的条件                       |
 | 513  | [找树左下角的值](https://leetcode-cn.com/problems/find-bottom-left-tree-value/) |      |                                                              |                           层序遍历                           |
 | 106⭐ | [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) |      |                                                              |                         二叉树的构建                         |
+| 543⭐ | [二叉树的直径](https://leetcode-cn.com/problems/diameter-of-binary-tree/) |      |                                                              |                           树的深度                           |
 
 **递归之经验：**
 
@@ -295,6 +296,19 @@ struct Node{
 | 题号 |                             题目                             | 实现 | 参考 |     备注     |
 | :--: | :----------------------------------------------------------: | :--: | :--: | :----------: |
 | 106⭐ | [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) |      |      | 二叉树的构建 |
+| 105  | [从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) |      |      | 二叉树的构建 |
+| 530  | [二叉搜索树的最小绝对差](https://leetcode-cn.com/problems/minimum-absolute-difference-in-bst/) |      |      |   中序遍历   |
+
+
+
+### 二叉搜索树
+
+二叉搜索树中序遍历是有序的。如果涉及统计或者比较的，一般需要一个指针指向前一个结点.
+
+| 题号 |                             题目                             | 实现 |                             参考                             |       备注        |
+| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :---------------: |
+| 700  | [二叉搜索树中的搜索](https://leetcode-cn.com/problems/search-in-a-binary-search-tree/) |      |                                                              |                   |
+| 501⭐ | [二叉搜索树中的众数](https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/) |      | [二叉树：我的众数是多少？](https://mp.weixin.qq.com/s/KSAr6OVQIMC-uZ8MEAnGHg) | map转vector的排序 |
 
 
 
