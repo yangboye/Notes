@@ -327,9 +327,7 @@ struct Node{
 
 ## 回溯
 
-> 解决的问题：组合、排列、分割、子集
-
-
+### 解决的问题
 
 回溯是暴力解法，如果需要优化，则添加一些剪枝操作。回溯一般可以解决如下几种问题：
 
@@ -341,7 +339,13 @@ struct Node{
 
 > 组合与排列的区别：**组合是不强调元素顺序的，排列是强调元素顺序**
 
-回溯算法模板框架：
+
+
+### 理论
+
+#### 回溯算法模板框架
+
+框架如下：
 
 ```c++
 void backtracking(参数) {
@@ -360,17 +364,7 @@ void backtracking(参数) {
 
 
 
-### 经验：
-
-#### 1. 何时需要`startIndex`？
-
-> 如果是一个集合来求组合的话，就需要startIndex，例如：[回溯算法：求组合问题！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485253&idx=1&sn=8332edaabc9bf43e45835bce7964ce88&scene=21#wechat_redirect)，[回溯算法：求组合总和！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485277&idx=1&sn=0553db6b5c5952094d536ae2b8c18124&scene=21#wechat_redirect)。
->
-> 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如：[回溯算法：电话号码的字母组合](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485295&idx=1&sn=35bd6c240a5a59d7ea6d9f98c09e7dbd&scene=21#wechat_redirect)
-
-
-
-相关题目：
+### 相关题目
 
 | 题号 |                             题目                             | 实现 |                             参考                             |     备注      |
 | :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :-----------: |
@@ -388,11 +382,31 @@ void backtracking(参数) {
 
 
 
+### 经验
+
+#### 1. 何时需要`startIndex`？
+
+> 如果是一个集合来求组合的话，就需要startIndex，例如：[回溯算法：求组合问题！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485253&idx=1&sn=8332edaabc9bf43e45835bce7964ce88&scene=21#wechat_redirect)，[回溯算法：求组合总和！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485277&idx=1&sn=0553db6b5c5952094d536ae2b8c18124&scene=21#wechat_redirect)。
+>
+> 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如：[回溯算法：电话号码的字母组合](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485295&idx=1&sn=35bd6c240a5a59d7ea6d9f98c09e7dbd&scene=21#wechat_redirect)
+
+
+
+
+
 ## 贪心
+
+### 解决的问题
+
+
+
+### 理论
+
+
 
 贪心的题一般需要排序
 
-
+### 相关题目
 
 | 题号 |                             题目                             | 实现 |                             参考                             |     备注     |
 | :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :----------: |
@@ -402,7 +416,13 @@ void backtracking(参数) {
 
 
 
-## DP
+### 经验
+
+
+
+
+
+## 动态规划
 
 
 
