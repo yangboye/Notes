@@ -12,7 +12,6 @@ public:
   unordered_map<char, string> dct; // 存储电话按键对应的字母
   vector<string> result;  // 存储结果
   string path;    // 存储路径
-
   void backtrack(string digits, int cur) {
     if (path.size() == digits.size()) {
       result.push_back(path);
