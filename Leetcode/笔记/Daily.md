@@ -327,6 +327,10 @@ struct Node{
 
 ## 回溯
 
+> 解决的问题：组合、排列、分割、子集
+
+
+
 回溯是暴力解法，如果需要优化，则添加一些剪枝操作。回溯一般可以解决如下几种问题：
 
 - 组合问题：N个数里面按一定规则找出k个数的集合
@@ -356,6 +360,32 @@ void backtracking(参数) {
 
 
 
+### 经验：
+
+#### 1. 何时需要`startIndex`？
+
+> 如果是一个集合来求组合的话，就需要startIndex，例如：[回溯算法：求组合问题！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485253&idx=1&sn=8332edaabc9bf43e45835bce7964ce88&scene=21#wechat_redirect)，[回溯算法：求组合总和！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485277&idx=1&sn=0553db6b5c5952094d536ae2b8c18124&scene=21#wechat_redirect)。
+>
+> 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如：[回溯算法：电话号码的字母组合](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485295&idx=1&sn=35bd6c240a5a59d7ea6d9f98c09e7dbd&scene=21#wechat_redirect)
+
+
+
+相关题目：
+
+| 题号 |                             题目                             | 实现 |                             参考                             |     备注      |
+| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :-----------: |
+|  77  |    [组合](https://leetcode-cn.com/problems/combinations/)    |      | [回溯算法：求组合问题！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485253&idx=1&sn=8332edaabc9bf43e45835bce7964ce88&scene=21#wechat_redirect) |   组合问题    |
+|  39  | [组合总和](https://leetcode-cn.com/problems/combination-sum/) |      |                                                              |               |
+| 40⭐  | [组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/) |      | [回溯算法：求组合总和（三）](https://mp.weixin.qq.com/s/_1zPYk70NvHsdY8UWVGXmQ) |               |
+|      |                                                              |      |                                                              |               |
+| 131⭐ | [分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/) |      | [回溯算法：分割回文串](https://mp.weixin.qq.com/s/Pb1epUTbU8fHIht-g_MS5Q) |   分割问题    |
+| 93⭐  | [复原 IP 地址](https://leetcode-cn.com/problems/restore-ip-addresses/) |      |                                                              |               |
+|  78  |      [子集](https://leetcode-cn.com/problems/subsets/)       |      | [回溯算法：求子集问题！](https://mp.weixin.qq.com/s/NNRzX-vJ_pjK4qxohd_LtA) |   子集问题    |
+| 90⭐  |   [子集 II](https://leetcode-cn.com/problems/subsets-ii/)    |      |                                                              | 子集问题+去重 |
+| 491⭐ | [递增子序列](https://leetcode-cn.com/problems/increasing-subsequences/) |      | [回溯算法：递增子序列](https://mp.weixin.qq.com/s/ePxOtX1ATRYJb2Jq7urzHQ) |               |
+|  46  |   [全排列](https://leetcode-cn.com/problems/permutations/)   |      |                                                              |   排列问题    |
+|  47  |                                                              |      |                                                              |               |
+
 
 
 ## 贪心
@@ -384,3 +414,16 @@ void backtracking(参数) {
 | :--: | :----------------------------------------------------------: | :--: | :--: | :------: |
 | 470⭐ | [用 Rand7() 实现 Rand10()](https://leetcode-cn.com/problems/implement-rand10-using-rand7/) |      |      | 拒绝采样 |
 
+
+
+# 技巧
+
+- 将字符串转换成整型
+
+  ```c++
+  const char ts[] = "123";
+  int a;
+  sscanf(ts, "%d", &a);
+  ```
+
+  
