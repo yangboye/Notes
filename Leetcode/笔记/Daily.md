@@ -390,7 +390,17 @@ void backtracking(参数) {
 >
 > 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如：[回溯算法：电话号码的字母组合](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247485295&idx=1&sn=35bd6c240a5a59d7ea6d9f98c09e7dbd&scene=21#wechat_redirect)
 
+#### 2. 何时需要对元素排序？
 
+> 如果元素有重复，一般需要排序。例如：[组合总和II](https://leetcode-cn.com/problems/combination-sum-ii/)。但是子序列问题不可以，例如[491]
+
+#### 3. result.add(path)的位置
+
+> 一般来说：组合问题和排列问题是在树形结构的叶子节点上收集结果，而子集问题就是取树上所有节点的结果。
+
+#### 4. 何时需要`return;`，何时又不需要？
+
+> 看情况。
 
 
 
@@ -402,7 +412,17 @@ void backtracking(参数) {
 
 ### 理论
 
+贪心算法一般分为四步：
 
+- 将问题分解为若干子问题；
+
+- 找出适合的贪心策略；
+
+- 求解每一个子问题的最优解；
+
+- 将局部最优解堆叠成全局最优解。
+
+  
 
 贪心的题一般需要排序
 
@@ -423,6 +443,40 @@ void backtracking(参数) {
 
 
 ## 动态规划
+
+### 解决的问题
+
+动态规划（Dynamic Programming），如果某一问题有很多重叠子问题，使用动态规划是最有效的。动态规划中每一个状态一定是由上一个状态推导出来的，这一点区分于贪心，贪心没有状态推导，而是从局部直接选最优的。
+
+
+
+### 理论
+
+拆解为五步：
+
+- 确定dp数组及其下标的含义；
+- 确定递推公式；
+- dp数组如何初始化；
+- 确定遍历顺序；
+- 举例推导dp数组。
+
+
+
+### 相关题目
+
+| 题号 |                             题目                             | 实现 | 参考 |        备注        |
+| :--: | :----------------------------------------------------------: | :--: | :--: | :----------------: |
+| 509  | [斐波那契数](https://leetcode-cn.com/problems/fibonacci-number/) |      |      |      动态规划      |
+|  70  | [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)  |      |      |      动态规划      |
+| 746  | [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/) |      |      | 理解“阶梯顶”的意思 |
+|  62  |  [不同路径](https://leetcode-cn.com/problems/unique-paths/)  |      |      |                    |
+| 343⭐ | [整数拆分](https://leetcode-cn.com/problems/integer-break/)  |      |      |                    |
+
+
+
+### 经验
+
+
 
 
 
