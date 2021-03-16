@@ -464,18 +464,40 @@ void backtracking(参数) {
 
 ### 相关题目
 
-| 题号 |                             题目                             | 实现 | 参考 |        备注        |
-| :--: | :----------------------------------------------------------: | :--: | :--: | :----------------: |
-| 509  | [斐波那契数](https://leetcode-cn.com/problems/fibonacci-number/) |      |      |      动态规划      |
-|  70  | [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)  |      |      |      动态规划      |
-| 746  | [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/) |      |      | 理解“阶梯顶”的意思 |
-|  62  |  [不同路径](https://leetcode-cn.com/problems/unique-paths/)  |      |      |                    |
-| 343⭐ | [整数拆分](https://leetcode-cn.com/problems/integer-break/)  |      |      |                    |
-| 96⭐  | [不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/) |      |      |      卡特兰数      |
+| 题号 |                             题目                             | 实现 |                             参考                             |        备注        |
+| :--: | :----------------------------------------------------------: | :--: | :----------------------------------------------------------: | :----------------: |
+| 509  | [斐波那契数](https://leetcode-cn.com/problems/fibonacci-number/) |      |                                                              |      动态规划      |
+|  70  | [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)  |      |                                                              |      动态规划      |
+| 746  | [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/) |      |                                                              | 理解“阶梯顶”的意思 |
+|  62  |  [不同路径](https://leetcode-cn.com/problems/unique-paths/)  |      |                                                              |                    |
+| 343⭐ | [整数拆分](https://leetcode-cn.com/problems/integer-break/)  |      |                                                              |                    |
+| 96⭐  | [不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/) |      |                                                              |      卡特兰数      |
+| 518⭐ | [零钱兑换 II](https://leetcode-cn.com/problems/coin-change-2/) |      | [动态规划：给你一些零钱，你要怎么凑？](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486757&idx=1&sn=36f5eb60bfe4d8993cf3b3def5645a34&scene=21#wechat_redirect) |   完全背包+组合    |
+| 377⭐ | [组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/) |      | [动态规划：Carl称它为排列总和！](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486826&idx=2&sn=80de2ae278bfd0c906d51fd012d37565&scene=21#wechat_redirect) |   完全背包+排列    |
+| 179  | [完全平方数](https://leetcode-cn.com/problems/perfect-squares/) |      | [动态规划：一样的套路，再求一次完全平方数](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486872&idx=2&sn=01a3b81edafd125812d8860e89a6407f&scene=21#wechat_redirect) |                    |
+| 139⭐ |   [单词拆分](https://leetcode-cn.com/problems/word-break/)   |      | [动态规划：单词拆分](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486916&idx=2&sn=739861fa954827bff3591459da514443&scene=21#wechat_redirect) |       子序列       |
 
 
 
 ### 经验
+
+完全背包问题：物品可以无限件使用，凑成容量为n的背包。
+
+- 初始化：
+
+  - 如果是求最小，则dp初始化为`INT_MAX`;
+  - 如果是求最大，则dp初始化为`0`或`INT_MIN`.
+
+- 其遍历顺序：
+  - 如果求组合数就是外层for循环遍历物品，内层for遍历背包；
+  - 如果求排列数就是外层for遍历背包，内层for循环遍历物品；
+
+- 相关题目：
+
+  - 求组合数：[动态规划：518.零钱兑换II](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486757&idx=1&sn=36f5eb60bfe4d8993cf3b3def5645a34&scene=21#wechat_redirect)
+
+  - 求排列数：、[动态规划：70. 爬楼梯进阶版（完全背包）](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486833&idx=1&sn=beda10fdf8f53e8596dd3ad56ff751d5&scene=21#wechat_redirect)
+  - 求最小数：[动态规划：322. 零钱兑换](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486848&idx=1&sn=fec1c0c36789f4929a9067910afd600b&scene=21#wechat_redirect)、[动态规划：279.完全平方数](https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486872&idx=2&sn=01a3b81edafd125812d8860e89a6407f&scene=21#wechat_redirect)
 
 
 
